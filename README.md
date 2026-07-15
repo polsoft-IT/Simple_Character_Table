@@ -1,69 +1,58 @@
-# 🗺️ Simple Character Table
+# Simple Character Table
 
-![App Screenshot](screenshot.png)
+Prosty przeglądarka znaków Unicode napisana w Pythonie z użyciem biblioteki Tkinter.
 
-[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Platform](https://img.shields.io/badge/platform-windows%20%7C%20macos%20%7C%20linux-lightgrey.svg)]()
+To narzędzie działa jako alternatywa dla systemowego programu Charmap i pozwala szybko przeglądać znaki Unicode, wyszukiwać je po nazwie lub kodzie oraz kopiować je do schowka.
 
-A lightweight, modern, and multilingual alternative to the Windows system utility **charmap.exe** (Character Map). Built with pure Python using the built-in **Tkinter** GUI library, it runs seamlessly on any operating system without requiring any external dependencies.
+## Funkcje
 
----
+- przeglądanie znaków z różnych kategorii Unicode
+- wyszukiwanie znaków po:
+  - znaku
+  - kodzie hexadecymalnym
+  - nazwie Unicode
+- podgląd wybranego znaku wraz z informacjami o kodzie
+- kopiowanie znaku do schowka
+- kopiowanie sekwencji Python/HTML
+- obsługa ulubionych znaków
+- interfejs w języku polskim i angielskim
 
-## ✨ Features
+## Wymagania
 
-* 🌍 **Full Dual-Language Support:** Instant interface switching between English (**EN**) and Polish (**PL**).
-* 📂 **Categorized Layout:** Quick access to Basic Latin, IPA phonetic symbols, Greek, Cyrillic, Mathematical symbols, Arrows, and basic Emojis.
-* 🔍 **Live Search:** Filter characters dynamically by their Unicode name, hex code (e.g., `U+00C0`), or decimal value.
-* ⭐ **Favorites System:** Right-click any character to add it to your favorites list. Your favorites are saved to `ulubione.txt` and persist across application restarts.
-* 📋 **Quick Copy:** Copy either the character itself or its Python-ready escape sequence (`\uXXXX`) with a single click.
+- Python 3
+- biblioteka Tkinter (zwykle dołączona do instalacji Pythona)
 
----
+## Uruchomienie
 
-## 🚀 Getting Started
+Na Windowsie możesz uruchomić program poleceniem:
 
-The application does not require any external packages (no `pip` installs needed). All you need is **Python 3** installed on your system.
-
-### Step 1: Clone the Repository
-Clone the repository to your local machine:
 ```bash
-git clone [https://github.com/polsoft-its-uk/simple-character-table.git](https://github.com/polsoft-its-uk/simple-character-table.git)
-cd simple-character-table
-Step 2: Run the Application
-Depending on your operating system, run the following command in your terminal:
+py "Simple Character Table.py"
+```
 
-Windows:
+Jeżeli Python jest zainstalowany jako `python`, użyj:
 
-DOS
-python tablica_znakow.py
-Linux / macOS:
+```bash
+python "Simple Character Table.py"
+```
 
-Bash
-python3 tablica_znakow.py
-🛠️ Built With
-This project relies exclusively on the Python Standard Library, ensuring maximum compatibility and security:
+## Struktura projektu
 
-Python 3
+- `Simple Character Table.py` — główny plik aplikacji
+- `ulubione.txt` — plik z zapisanymi ulubionymi znakami (tworzony automatycznie)
 
-Tkinter (Graphical User Interface)
+## Przykład użycia
 
-Unicodedata (Unicode character database lookup)
+1. Uruchom aplikację.
+2. Wybierz kategorię znaków.
+3. Kliknij znak, aby zobaczyć jego szczegóły.
+4. Skopiuj znak lub sekwencję do schowka.
 
-📂 Project Structure
-tablica_znakow.py – Main application source code.
+## Autor
 
-screenshot.png – Interface preview image.
+Sebastian Januchowski
 
-ulubione.txt – Automatically generated file storing your favorite character codes.
+## Kontakt
 
-README.md – Project documentation.
-
-📝 License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-👥 Author
-Author: Sebastian Januchowski
-
-Email: polsoft.its@mail.com
-
-GitHub: polsoft-its-uk
+- E-mail: polsoft.its@mail.com
+- GitHub: https://github.com/polsoft-its-uk
