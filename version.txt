@@ -1,36 +1,28 @@
 # UTF-8
-# For more details see https://pyinstaller.org/en/stable/usage.html#spec-files
-
-# File version information based on app About dialog
-
 VSVersionInfo(
   ffi=FixedFileInfo(
     filevers=(1, 0, 0, 0),
     prodvers=(1, 0, 0, 0),
     mask=0x3f,
     flags=0x0,
-    OS=0x4,
     fileType=0x1,
     subtype=0x0,
     date=(0, 0)
-  ),
+    ),
   kids=[
-    StringFileInfo([
+    StringFileInfo(
+      [
       StringTable(
-        [
-          StringStruct('CompanyName', 'Sebastian Januchowski |polsoft.ITS'),
-          StringStruct('FileDescription', 'Simple Character Table'),
-          StringStruct('FileVersion', '1.0.0.0'),
-          StringStruct('InternalName', 'Simple Character Table'),
-          StringStruct('OriginalFilename', 'Simple Character Table.exe'),
-          StringStruct('ProductName', 'Simple Character Table'),
-          StringStruct('ProductVersion', '1.0.0.0'),
-          StringStruct('LegalCopyright', '© 2026 polsoft.ITS'),
-          StringStruct('LegalTrademarks', 'polsoft.ITS™'),
-          StringStruct('Comments', 'Unicode character table application by Sebastian Januchowski')
-        ]
-      )
-    ]),
-    VarFileInfo([VarStruct('Translation', [1033, 1200])])
+        u'040904B0',
+        [StringStruct(u'CompanyName', u'Sebastian Januchowski'),
+         StringStruct(u'FileDescription', u'Simple Character Table - Unicode character browser'),
+         StringStruct(u'FileVersion', u'1.0.0.0'),
+         StringStruct(u'InternalName', u'SimpleCharacterTable'),
+         StringStruct(u'LegalCopyright', u'Copyright (C) 2026 Sebastian Januchowski'),
+         StringStruct(u'OriginalFilename', u'Simple Character Table.exe'),
+         StringStruct(u'ProductName', u'Simple Character Table'),
+         StringStruct(u'ProductVersion', u'1.0.0.0')])
+      ]),
+    VarFileInfo([VarStruct(u'Translation', [1033, 1200])])
   ]
 )

@@ -9,6 +9,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import unicodedata
 import os
+import sys
 
 LANG = {
     "en": {
@@ -146,15 +147,20 @@ def char_name(cp, lang="en"):
         return LANG[lang]["no_name"]
 
 
+def get_resource_path(filename):
+    if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
+        return os.path.join(sys._MEIPASS, filename)
+    return os.path.join(os.path.dirname(__file__), filename)
+
+
 class TablicaZnakow(tk.Tk):
     def __init__(self):
         super().__init__()
         self.lang = "en"
         self.title(LANG[self.lang]["title"])
 
-        base_dir = os.path.dirname(__file__)
-        ico_path = os.path.join(base_dir, "icon.ico")
-        png_path = os.path.join(base_dir, "icon.png")
+        ico_path = get_resource_path("tz-ico.ico")
+        png_path = get_resource_path("tz-png.png")
 
         if os.path.exists(ico_path):
             try:
@@ -201,8 +207,8 @@ class TablicaZnakow(tk.Tk):
         about_window.configure(bg="#f0f0f0")
 
         # Set window size and center it
-        window_width = 360
-        window_height = 200
+        window_width = 340
+        window_height = 240
         screen_width = about_window.winfo_screenwidth()
         screen_height = about_window.winfo_screenheight()
         center_x = int(screen_width/2 - window_width/2)
@@ -213,32 +219,46 @@ class TablicaZnakow(tk.Tk):
         about_window.transient(self)
         about_window.grab_set()
 
-        frame = tk.Frame(about_window, bg="#f0f0f0", padx=20, pady=20)
+        frame = tk.Frame(about_window, bg="#f0f0f0", padx=16, pady=16)
         frame.pack(fill="both", expand=True)
 
+        header_frame = tk.Frame(frame, bg="#f0f0f0")
+        header_frame.pack(fill="x", pady=(0, 8))
+
+        # Load and display a smaller icon
+        try:
+            png_path = get_resource_path("tz-png.png")
+            if os.path.exists(png_path):
+                icon_img = tk.PhotoImage(file=png_path)
+                about_window.icon_photo = icon_img.subsample(6, 6)
+                icon_label = tk.Label(header_frame, image=about_window.icon_photo, bg="#f0f0f0")
+                icon_label.pack(side="left", padx=(0, 10))
+        except Exception:
+            pass
+
         # Program name label
-        program_label = tk.Label(frame, text=LANG[self.lang]["program_name"],
-                                 font=("Segoe UI", 14, "bold"), bg="#f0f0f0", anchor="w")
-        program_label.pack(fill="x", pady=(0, 10))
+        program_label = tk.Label(header_frame, text=LANG[self.lang]["program_name"],
+                                 font=("Segoe UI", 12, "bold"), bg="#f0f0f0", anchor="w")
+        program_label.pack(side="left", fill="x")
 
         author_label = tk.Label(frame, text=f"{LANG[self.lang]['author']} Sebastian Januchowski",
-                                font=("Segoe UI", 11), bg="#f0f0f0", anchor="w")
-        author_label.pack(fill="x", pady=4)
+                                font=("Segoe UI", 10), bg="#f0f0f0", anchor="w")
+        author_label.pack(fill="x", pady=2)
 
         mail_label = tk.Label(frame, text=f"{LANG[self.lang]['mail']} polsoft.its@mail.com",
-                              font=("Segoe UI", 11), bg="#f0f0f0", anchor="w", fg="#0d6efd", cursor="hand2")
-        mail_label.pack(fill="x", pady=4)
+                              font=("Segoe UI", 10), bg="#f0f0f0", anchor="w", fg="#0d6efd", cursor="hand2")
+        mail_label.pack(fill="x", pady=2)
         mail_label.bind("<Button-1>", lambda e: self._open_url("mailto:polsoft.its@mail.com"))
 
         github_label = tk.Label(frame, text=f"{LANG[self.lang]['github']} polsoft.ITS™",
-                                font=("Segoe UI", 11), bg="#f0f0f0", anchor="w", fg="#0d6efd", cursor="hand2")
-        github_label.pack(fill="x", pady=4)
+                                font=("Segoe UI", 10), bg="#f0f0f0", anchor="w", fg="#0d6efd", cursor="hand2")
+        github_label.pack(fill="x", pady=2)
         github_label.bind("<Button-1>", lambda e: self._open_url("https://github.com/polsoft-IT"))
 
-        ok_btn = tk.Button(frame, text="OK", font=("Segoe UI", 10),
+        ok_btn = tk.Button(frame, text="OK", font=("Segoe UI", 9),
                           command=about_window.destroy,
-                          bg="#ffffff", relief="raised", bd=2, padx=20)
-        ok_btn.pack(pady=12)
+                          bg="#ffffff", relief="raised", bd=2, padx=14, pady=3)
+        ok_btn.pack(pady=(12, 4))
 
     def _open_url(self, url):
         import webbrowser
