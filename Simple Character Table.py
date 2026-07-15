@@ -217,7 +217,7 @@ class TablicaZnakow(tk.Tk):
         github_label = tk.Label(frame, text=f"{LANG[self.lang]['github']} polsoft.ITS™",
                                 font=("Segoe UI", 11), bg="#f0f0f0", anchor="w", fg="#0d6efd", cursor="hand2")
         github_label.pack(fill="x", pady=4)
-        github_label.bind("<Button-1>", lambda e: self._open_url("https://github.com/polsoft-its-uk"))
+        github_label.bind("<Button-1>", lambda e: self._open_url("https://github.com/polsoft-IT"))
 
         ok_btn = tk.Button(frame, text="OK", font=("Segoe UI", 10),
                           command=about_window.destroy,
